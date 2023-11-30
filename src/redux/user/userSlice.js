@@ -19,7 +19,7 @@ import {  createSlice } from "@reduxjs/toolkit";
          state.loading=false,
          state.loading= false 
         },
-        signInFailure:(state,payload)=>{
+        signInFailure:(state,action)=>{
          state.error = action.payload,
          state.loading=false
         }
