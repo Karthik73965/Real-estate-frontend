@@ -14,11 +14,11 @@ import {  createSlice } from "@reduxjs/toolkit";
         signInStart:(state)=>{
          state.loading=true ;
         },
-        signInSucess:(state,action)=>{
-         state.currentUser= action.payload;
-         state.loading=false,
-         state.loading= false 
-        },
+        signInSuccess: (state, action) => {
+         state.currentUser = action.payload;
+         state.loading = false;
+         state.error = null;
+       },
         signInFailure:(state,action)=>{
          state.error = action.payload,
          state.loading=false
@@ -26,5 +26,6 @@ import {  createSlice } from "@reduxjs/toolkit";
     }
  });
 
- export const {signInFailure, signInStart, signInSucess} = userSlice.actions;
+ export const { signInFailure, signInStart, signInSuccess } = userSlice.actions;
+
  export default userSlice.reducer;

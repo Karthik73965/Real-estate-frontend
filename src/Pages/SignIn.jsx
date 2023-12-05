@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import {Link , useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { signInFailure, signInStart , signInSucess } from '../redux/user/userSlice'
+import { signInFailure, signInStart , signInSuccess } from '../redux/user/userSlice.js'
+import OAUTH from '../components/OAUTH'
 
 export const SignIn = () => {
   const [FormData,SetFormData] = useState({  })
    const {error, loading}  = useSelector((state)=>state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const eroor = JSON.stringify(error)
   const handleChange = (e)=>{
        SetFormData({
         ...FormData,
@@ -32,7 +33,7 @@ export const SignIn = () => {
         dispatch(signInFailure(Data.message))
         return ;  
       }
-     dispatch(signInSucess(Data))
+     dispatch(signInSuccess(Data))
       navigate('/')
      } catch (error) {
         dispatch(signInFailure(error.message))
@@ -46,6 +47,7 @@ export const SignIn = () => {
         <input type="email" className='border p-3 rounded-lg' placeholder= 'email' id="email" onChange={handleChange}/>
         <input type="password" className='border p-3 rounded-lg' placeholder= 'password' id="password"onChange={handleChange} />
         <button disabled={loading} className='bg-slate-700 text-white p-3  rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading?'Loading...':'SignIP'}</button>
+       <OAUTH/>
       </form>
       <div className='flex gap-3 mt-5'>
         <p> Dont Have an account ?</p>
@@ -53,7 +55,7 @@ export const SignIn = () => {
           <span className='text-blue-700'>Signup</span>
           </Link>
         </div>
-        {error && <p className='text-red-500'>check the credentials</p>}
+        {error && <p className='text-red-500'>some error was happendes </p>}
       </div>
   )
 }
