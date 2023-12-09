@@ -6,6 +6,7 @@ import { Profile } from './Pages/Profile'
 import { SignIn } from './Pages/SignIn'
 import { SignUp    } from './Pages/SignUp'
 import { Header } from './components/Header'
+import { PrivateRoute } from './components/PrivateRoute'
 
 export const App = () => {
   return (
@@ -14,7 +15,9 @@ export const App = () => {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
+          <Route element={<PrivateRoute/>}>
           <Route path='/profile' element={<Profile/>}/>
+          </Route>
           <Route path='/Signin' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
          
