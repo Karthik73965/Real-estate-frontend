@@ -20,6 +20,7 @@ import {
    SignOutUserSuccess,
    } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 export const Profile = () => {
@@ -124,11 +125,11 @@ const handlelogout=async()=>{
   }
 }
   return (
-    <div className='p-3 mx-auto max-w-lg'>
+    <div className='mb-2 p-3 mx-auto max-w-lg'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col '>
         <input onChange={(e)=>setfile(e.target.files[0])} type='file' ref={fileref} hidden accept='image/*'/>
-        <img  onClick={()=>{fileref.current.click()}} src={formData.avatar || currentUser.avatar} className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'  alt='profile'/>
+        <img  onClick={()=>{fileref.current.click()}} src={formData.avatar || currentUser.avatar} className='m-2 rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'  alt='profile'/>
         <p className='text-sm self-center'>
           {uploadError?(
             <span className='text-red-500S'>Error image uploaded (image must be less than 2 mb )</span> 
@@ -149,6 +150,9 @@ const handlelogout=async()=>{
           loading?"loading":"update"
          }
         </button>
+        <Link className='bg-green-700 text-white p-3 rounded-lg mt-3 uppercase text-center hover:opacity-95' to = {'/create-listing'}>
+        create Listing
+        </Link>
       </form>
       <div className='flex justify-between mt-5'>
           <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Delete account</span>
