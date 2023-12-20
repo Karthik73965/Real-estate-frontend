@@ -9,6 +9,7 @@ import { Header } from './components/Header'
 import { PrivateRoute } from './components/PrivateRoute'
 import { CreateListing } from './Pages/CreateListing'
 import { Updatelisting } from './Pages/updatelisting'
+import Listing from './Pages/Listing'
 
 export const App = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
           </Route>
           <Route path='/Signin' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
+          <Route path='/listing/:listingId' element={<Listing/>}/>
         </Routes>
    
     </BrowserRouter>
